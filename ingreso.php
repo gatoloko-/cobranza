@@ -64,7 +64,7 @@ if(!$L->isUserLoggedIn()){
 				<tr>
 					<td width="80">Tipo</td>
 					<td>
-						<select name="tipo">
+						<select name="tipo" required>
 							<option></option>
 							<option value="33">AFECTA</option>
 							<option value="34">EXENTA</option>
@@ -96,7 +96,8 @@ if(!$L->isUserLoggedIn()){
 				<tr>
 					<td>Tipo</td>
 					<td>
-						<select name="tipo">
+						<select name="tipo" required>
+							<option></option>
 							<option value="33">AFECTA</option>
 							<option value="34">EXENTA</option>
 						</select>
@@ -104,7 +105,7 @@ if(!$L->isUserLoggedIn()){
 				</tr>
 				<tr>
 					<td>Cliente</td>
-					<td><input type="text" name="cliente" onclick="openDialog('clienteDiv')" required/></td>
+					<td><input type="text" id="cliente" name="cliente" onclick="openDialog('clienteDiv')" readonly="" required/></td>
 				</tr>
 				<tr>
 					<td>Monto</td>
@@ -134,8 +135,10 @@ if(!$L->isUserLoggedIn()){
 				<tr>
 					<td>RUT/RAZÓN SOCIAL</td>
 					<td><input type="text" name="rr" id="rr"></td>
+					<td><button onclick="postClientes();">BUSCAR</button></td>
 				</tr>
 			</table>
+			<div  id="clientTable"></div>
 		</div>
 		<!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 	</body>

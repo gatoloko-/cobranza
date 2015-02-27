@@ -40,9 +40,9 @@ $dueBills = $factura->dueBillsPlazo(30);
 			<table class="grid-cobranza">
 				<tr>
 					<th width="100">RUT</th>
-					<th width="200">RAZÓN</th>
-					<th width="50">NUMERO</th>
-					<th width="60">MONTO</th>
+					<th width="300">RAZÓN</th>
+					<th width="100">NUMERO</th>
+					<th width="80">MONTO</th>
 					<th width="40">VENCIMIENTO</th>
 				</tr>
 				<?php foreach($dueBills as $documento){ 
@@ -52,7 +52,7 @@ $dueBills = $factura->dueBillsPlazo(30);
 				<tr>
 					<td><?php echo $documento['cliente'];?></td>
 					<td><?php echo $cliente->getRazon() ?></td>
-					<td><?php echo $documento['numero'];?></td>
+					<td><?php if($documento['tipo']==33){$tipo="A";}else{$tipo="E";} echo $documento['numero']." ".$tipo;?></td>
 					<td><?php echo $documento['monto'];?></td>
 					<td><?php echo $documento['vencimiento'];?></td>
 				</tr>

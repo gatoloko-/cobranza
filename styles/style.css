@@ -41,5 +41,9 @@ table {
 
 #clienteDiv {
   display: none; }
+  #clienteDiv table {
+    font-size: 20px; }
+  #clienteDiv td {
+    padding: 10px; }
 
 /*# sourceMappingURL=style.css.map */

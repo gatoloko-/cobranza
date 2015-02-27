@@ -28,6 +28,7 @@ if(!$data){
 
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		<?php include 'incs.php'; incs(true, true, true); ?>
+		<script src="js/ingreso.js"></script>
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -72,7 +73,7 @@ if(!$data){
 				</tr>
 				<tr>
 					<td>Cliente</td>
-					<td><input type="text" name="cliente" value="<?php echo $data['cliente'] ?>"  required/></td>
+					<td><input type="text" id="cliente" name="cliente" onclick="openDialog('clienteDiv')" value="<?php echo $data['cliente'] ?>" readonly  required/></td>
 				</tr>
 				<tr>
 					<td>Monto</td>
@@ -96,6 +97,17 @@ if(!$data){
 			</table>
 			</form>
 		</div>
-		
+		<!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
+		<div id="clienteDiv">
+			<table>
+				<tr>
+					<td>RUT/RAZÓN SOCIAL</td>
+					<td><input type="text" name="rr" id="rr"></td>
+					<td><button onclick="postClientes();">BUSCAR</button></td>
+				</tr>
+			</table>
+			<div  id="clientTable"></div>
+		</div>
+		<!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 	</body>
 </html>

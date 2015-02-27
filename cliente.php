@@ -87,5 +87,23 @@ class cliente{
 			return TRUE;
 		}
 	}
+	public function search($t){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL listClienteSearch('".$t."')";
+		$resultado = $myCon->query($q);
+		try {
+		    $result = $resultado->num_rows;
+		} catch (Exception $e) {
+		    return NULL;
+		}
+		
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
 }
 ?>
