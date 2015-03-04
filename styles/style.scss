@@ -3,6 +3,21 @@ $font: 'Pathway Gothic One', sans-serif;
   margin-left: auto;
   margin-right: auto;
 }
+@mixin myTable(){
+  table{
+    font-size:20px;
+  }
+  tr:nth-child(odd){
+    background: #E3E3E3;
+  }
+  tr:nth-child(even){
+    background: #FFFFFF;
+  }
+  td{
+    padding: 10px;
+    vertical-align: text-top;
+  }
+}
 nav{
   font-family: $font;
   font-size: 20px;
@@ -48,6 +63,10 @@ table{
     padding: 10px;
     text-align: center;
   }
+  textarea{
+    width:400px;
+    height:80px;
+  }
 }
 .main{
   width: 600px;
@@ -61,4 +80,10 @@ table{
   td{
     padding: 10px;
   }
+}
+#comentariosDiv{
+  display:none;
+}
+.comTable{
+  @include myTable;
 }

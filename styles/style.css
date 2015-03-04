@@ -33,6 +33,9 @@ table {
 .grid-cobranza td {
   padding: 10px;
   text-align: center; }
+.grid-cobranza textarea {
+  width: 400px;
+  height: 80px; }
 
 .main {
   width: 600px;
@@ -45,5 +48,18 @@ table {
     font-size: 20px; }
   #clienteDiv td {
     padding: 10px; }
+
+#comentariosDiv {
+  display: none; }
+
+.comTable table {
+  font-size: 20px; }
+.comTable tr:nth-child(odd) {
+  background: #E3E3E3; }
+.comTable tr:nth-child(even) {
+  background: #FFFFFF; }
+.comTable td {
+  padding: 10px;
+  vertical-align: text-top; }
 
 /*# sourceMappingURL=style.css.map */

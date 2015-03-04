@@ -46,14 +46,51 @@ class comentario{
 		return $con;
 	}
 	
+	
+	public function getComentarios($factura, $tipo){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getComentarios(".$factura.", ".$tipo.")";
+		$resultado = $myCon->query($q);
+		try {
+		    $result = $resultado->num_rows;
+		} catch (Exception $e) {
+		    return NULL;
+		}
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
+	public function getSingleComentario($id){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getSingleComentario(".$id.")";
+		$resultado = $myCon->query($q);
+		$result = $resultado->num_rows;
+
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
 	public function newComentario($comentario, $factura, $tipo, $user){
 		$myCon =$this->con();
 		$q = "CALL newComentario('".$comentario."', '".$factura."', ".$tipo.", '".$user."')";
 		$myCon->query($q);
+		$newCommentId = $myCon->insert_id;
 		$result = $myCon->affected_rows;
+		
+		return $newCommentId;
+		/*
 		if($result==1){
-			return TRUE;
-		}
+			$comment = $this->getSingleComentario($newCommentId);
+			return $comment;
+		}*/
 	}
 }
 ?>
