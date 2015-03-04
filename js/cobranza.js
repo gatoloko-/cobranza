@@ -24,14 +24,18 @@ function showComentarios(factura, tipo){
 }
 function postComentario(f, t, user){
 	var comentario = $("#com").val();
-    url = "nuevo-comentario.php";
- 
-	// Send the data using post
-	var posting = $.post( url, { ff: f, tt: t, cc: comentario, u: user } );
+	if(comentario != ""){
+	    url = "nuevo-comentario.php";
 	 
-	// Put the results in a div
-	posting.done(function( data ) {
-		$("#comTable").empty();
-		$("#comTable").append(data);
-	});
+		// Send the data using post
+		var posting = $.post( url, { ff: f, tt: t, cc: comentario, u: user } );
+		 
+		// Put the results in a div
+		posting.done(function( data ) {
+			console.log(data);
+			$("#comTable").prepend(data);
+		});
+	}else{
+		alert('Debe ingresar un comentario!');
+	}
 }

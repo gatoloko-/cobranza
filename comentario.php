@@ -67,30 +67,26 @@ class comentario{
 	public function getSingleComentario($id){
 		$data = array();
 		$myCon = $this->con();
-		$q = "CALL getSingleComentario(".$id.")";
+		$q = "CALL getSingleComment(".$id.")";
 		$resultado = $myCon->query($q);
 		$result = $resultado->num_rows;
 
 		if($result>=1){
-			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
-				$data[] = $row;
-			}
+			$data = $resultado->fetch_array(MYSQLI_ASSOC);
 			return $data;
-		}
+		}
 	}
 	public function newComentario($comentario, $factura, $tipo, $user){
 		$myCon =$this->con();
-		$q = "CALL newComentario('".$comentario."', '".$factura."', ".$tipo.", '".$user."')";
+		$q = "INSERT INTO comentarios(fecha, comentario, factura, tipo, usuario) VALUES(NOW(), '".$comentario."', '".$factura."', ".$tipo.", '".$user."')";
 		$myCon->query($q);
 		$newCommentId = $myCon->insert_id;
 		$result = $myCon->affected_rows;
-		
-		return $newCommentId;
-		/*
+
 		if($result==1){
 			$comment = $this->getSingleComentario($newCommentId);
 			return $comment;
-		}*/
+		}
 	}
 }
 ?>

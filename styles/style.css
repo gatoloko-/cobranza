@@ -52,14 +52,16 @@ table {
 #comentariosDiv {
   display: none; }
 
-.comTable table {
-  font-size: 20px; }
-.comTable tr:nth-child(odd) {
-  background: #E3E3E3; }
-.comTable tr:nth-child(even) {
-  background: #FFFFFF; }
-.comTable td {
-  padding: 10px;
-  vertical-align: text-top; }
+.comTable {
+  width: 100%; }
+  .comTable table {
+    font-size: 20px; }
+  .comTable tr:nth-child(odd) {
+    background: #E3E3E3; }
+  .comTable tr:nth-child(even) {
+    background: #FFFFFF; }
+  .comTable td {
+    padding: 10px;
+    vertical-align: text-top; }
 
 /*# sourceMappingURL=style.css.map */

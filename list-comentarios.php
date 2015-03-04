@@ -18,7 +18,6 @@ if(!empty($lista)){ ?>
 			<td colspan="2" id="buttonTd"><button onclick="postComentario(<?php echo $f.", ".$t.", '".$_SESSION['user_name']."'"; ?>)">COMENTAR</button></td>
 		</tr>
 	</table>
-			<div id="commentsFeed">
 	<?php
 	echo "<table class='comTable' id='comTable'>";
 	foreach($lista as $data){ ?>
@@ -28,9 +27,16 @@ if(!empty($lista)){ ?>
 	</tr>
 <?php	}
 	echo "</table>";
-}else{
-	echo "No se encontraron datos.";
-}
+}else{ ?>
+	<table>
+		<tr>
+			<td>Comentario</td>
+			<td><textarea name="com" id="com"></textarea></td>
+			<td colspan="2" id="buttonTd"><button onclick="postComentario(<?php echo $f.", ".$t.", '".$_SESSION['user_name']."'"; ?>)">COMENTAR</button></td>
+		</tr>
+	</table>
+	<table class='comTable' id='comTable'></table>
+<?php }
 
 
 ?>

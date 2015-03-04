@@ -7,9 +7,13 @@ if($L->isUserLoggedIn()){
 	$c = $_POST['cc'];
 	$factura = $_POST['ff'];
 	$tipo = $_POST['tt'];
+	$newComment;
+	$newComment = $comentario->newComentario($c, $factura, $tipo, $_SESSION['user_name']);
+	$tr = "<tr>
+				<td>".$newComment['fecha']."<br/>".$newComment['usuario']."</td>
+				<td>".$newComment['comentario']."</td>
+			</tr>";
+	echo $tr;
 	
-	if($comentario->newComentario($c, $factura, $tipo, $_SESSION['user_name'])){
-		header('Location: main.php?f=ok');
-	}
 }
 ?>
