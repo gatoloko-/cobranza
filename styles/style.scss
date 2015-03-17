@@ -1,4 +1,10 @@
 $font: 'Pathway Gothic One', sans-serif;
+body{
+  font-family: $font;
+  input{
+    outline: none;
+  }
+}
 @mixin center(){
   margin-left: auto;
   margin-right: auto;
@@ -69,7 +75,7 @@ table{
   }
 }
 .main{
-  width: 600px;
+  width: 1000px;
   @include center;
 }
 #clienteDiv{
@@ -87,4 +93,24 @@ table{
 .comTable{
   @include myTable;
   width:100%;
+}
+#rebajaDiv{
+  
+  textarea{
+     width:100%;
+     height:60px;
+   }
+   input[type="radio"]{
+     width:20px;
+   }
+}
+.number{
+  text-align: center;
+  float: left;
+  margin: 20px;
+}
+.cifras{
+  font-size: 60px;
+  text-align: center;
+
 }

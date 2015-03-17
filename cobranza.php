@@ -29,6 +29,7 @@ $dueBills = $factura->dueBillsPlazo(30);
 		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 		<link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		
 	</head>
 
 	<body>
@@ -46,18 +47,21 @@ $dueBills = $factura->dueBillsPlazo(30);
 					<th width="100">NUMERO</th>
 					<th width="80">MONTO</th>
 					<th width="40">VENCIMIENTO</th>
+					<th width="40">REBAJAR</th>
 				</tr>
 				<?php foreach($dueBills as $documento){ 
 						$cliente->getData($documento['cliente']);
+						$razon = $cliente->getRazon();
 				?>
 					
 				<tr>
 					<td><img style="cursor: pointer;" src="img/select.png" onclick="showComentarios(<?php echo $documento['numero'].", ".$documento['tipo'] ?>)"></td>
 					<td><?php echo $documento['cliente'];?></td>
-					<td><?php echo $cliente->getRazon() ?></td>
+					<td><?php echo utf8_encode($razon); ?></td>
 					<td><?php if($documento['tipo']==33){$tipo="A";}else{$tipo="E";} echo $documento['numero']." ".$tipo;?></td>
 					<td><?php echo $documento['monto'];?></td>
 					<td><?php echo $documento['vencimiento'];?></td>
+					<td><img src="img/bil.png" onclick="showRebaja(<?php echo $documento['numero'].", ".$documento['tipo']; ?>);"></td>
 				</tr>
 				<?php } ?>
 			</table>
@@ -65,6 +69,9 @@ $dueBills = $factura->dueBillsPlazo(30);
 		<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 		<div id="comentariosDiv">
 				
+		</div>
+		<div id="rebajaDiv">
+			
 		</div>
 		<!--!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
 	</body>

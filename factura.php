@@ -82,10 +82,76 @@ class factura{
 			return TRUE;
 		}
 	}
+	
+	public function editEstado($numero, $tipo, $estado, $cierre, $user, $doc){
+		$myCon= $this->con();
+		$q = "CALL editEstadoFactura(".$numero.", ".$tipo.", ".$estado.", '".$cierre."')";
+		$q2 = "CALL commentRebaja('".$user."', ".$numero.", ".$tipo.", '".$doc."')";
+		if($myCon->query($q)){
+			$myCon->query($q2);
+			return TRUE;
+		}
+	}
+	
 	public function dueBillsPlazo($v=30){
 		$data = array();
 		$myCon = $this->con();
 		$q = "CALL getDueBillsPlazo(".$v.")";
+		$resultado = $myCon->query($q);
+		$result = $resultado->num_rows;
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
+	public function getFacturasPlazo($d, $e){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getFacturasPlazo('".$d."', ".$e.")";
+		$resultado = $myCon->query($q);
+		$result = $resultado->num_rows;
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
+	
+	public function getFacturasPagadasCliente($c){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getFacturasPagadasCliente('".$c."')";
+		$resultado = $myCon->query($q);
+		$result = $resultado->num_rows;
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+		
+	}
+	
+	public function getFacturaYears(){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getFacturaYears()";
+		$resultado = $myCon->query($q);
+		$result = $resultado->num_rows;
+		if($result>=1){
+			while($row = $resultado->fetch_array(MYSQLI_ASSOC)){
+				$data[] = $row;
+			}
+			return $data;
+		}
+	}
+	public function getClienteStatics($c){
+		$data = array();
+		$myCon = $this->con();
+		$q = "CALL getYearAverage('".$c."')";
 		$resultado = $myCon->query($q);
 		$result = $resultado->num_rows;
 		if($result>=1){

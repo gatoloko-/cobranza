@@ -68,7 +68,7 @@ class cliente{
 		$q = "CALL getDataCliente('".$rut."')";
 		$resultado = $myCon->query($q);
 		$result = $resultado->num_rows;
-		if($result>0){
+		if($result==1){
 			$data = $resultado->fetch_array(MYSQLI_ASSOC);
 			$this->rut = $data['rut'];
 			$this->razon = $data['razon'];
